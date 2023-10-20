@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Todo App</title>
+    <style>
+        body{
+            margin:0 auto;
+        }
+        h1{
+            color: blueviolet;
+        }
+        button{
+            color: beige;
+            background-color: rgb(136, 136, 163);
+            padding:0.2rem;
+            margin-left: 5px;
+            border: none;
+        }
+        input{
+            padding: 0.2rem;
+            background-color: rgb(242, 240, 245);
+        }
+        h2{
+            color: blue;
+            text-decoration: underline;
+        }
+        
+        
+    </style>
+</head>
+<body>
+    <h1>TODO APP</h1>
+    <div id="root"></div>
+
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+ 
+<script type="text/babel">
+
+function TodoComponent() {
+  const [text, setText] = React.useState('');
+  const [todos, setTodos] =React. useState([]);
+
+  const handleTextChange = (e) => {
+    setText(e.target.value);
+  }
+
+  const handleAddTodo = () => {
+    if (text.trim() === '') {
+      return; 
+    }
+
+
+    setTodos([...todos, text]);
+    setText(''); 
+  }
+
+  return (
+    <div>
+      <input
+        type="text"
+        placeholder="Enter Task Here"
+        value={text}
+        onChange={handleTextChange}
+      />
+      <button onClick={handleAddTodo}>Add Task</button>
+      {todos.length > 0 ? <h2>Todo List</h2> : null}
+    
+
+      <ul>
+        {todos.map((todo, index) => (
+          <li key={index}>{todo}</li>
+        ))}
+      </ul>
+    </div>
+  );
+}
+function App(){
+    return (
+        <TodoComponent/>
+    )
+}
+ReactDOM.createRoot(document.getElementById("root")).render(<App/>)
+
+</script>
+
+
+
+</body>
+</html>

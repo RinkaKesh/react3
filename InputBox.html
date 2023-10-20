@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Input Box</title>
+    <style>
+        #input{
+            color:rgb(3, 3, 39);
+            font-weight: bolder;
+            background-color:white;
+            /* padding: 5px; */
+            /* margin-right: 10px; */
+        }
+        #reset{
+            color:whitesmoke;
+            background-color: green;
+            /* margin-left:10px ; */
+            /* padding: 5px; */
+        }
+        
+        h1{
+            color: hotpink;
+            text-decoration:underline;
+        }
+        h2{
+            color: chocolate;
+            font-family:Arial, Helvetica, sans-serif
+        }
+    </style>
+</head>
+<body><center>
+    <h1>RK's Input Box</h1>
+    <div id="root"></div>
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <script type="text/babel">
+       
+        function InputBox(){
+            const [text,setText]=React.useState("");
+            const handleChange=(event)=>{
+                setText(event.target.value)
+            }
+            // let resetText=()=>{
+            //     setText=""
+            // }
+            return (
+                <>
+                <h2>{text}</h2>
+                <input onChange={handleChange} id="input" value={text} placeholder="Enter Here"/>
+                <button onClick={()=>setText("")} id="reset">RESET</button>
+                </>
+            )
+        }
+        function App(){
+            return(
+                <InputBox/>
+            )
+        }
+        let reactRoot=ReactDOM.createRoot(document.getElementById("root"));
+        reactRoot.render(<App/>)
+
+        
+
+
+    </script>
+    </center>
+</body>
+</html>
