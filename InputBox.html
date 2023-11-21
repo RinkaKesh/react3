@@ -47,9 +47,10 @@
             // }
             return (
                 <>
-                <h2>{text}</h2>
+                
                 <input onChange={handleChange} id="input" value={text} placeholder="Enter Here"/>
-                <button onClick={()=>setText("")} id="reset">RESET</button>
+                <h2>{text}</h2>
+                <button onClick={()=>setText("")} id="reset">CLEAR</button>
                 </>
             )
         }
